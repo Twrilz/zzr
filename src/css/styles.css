@@ -7,8 +7,8 @@ body {
 }
 
 .gallery {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 10px;
     padding: 20px;
     perspective: 1200px;
@@ -19,20 +19,52 @@ body {
     height: auto;
     border: 2px solid white;
     border-radius: 10px;
-    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.5s ease, opacity 0.5s ease;
-    transform: scale(1) translateZ(0);
-    will-change: transform, opacity;
+    transition: box-shadow 0.5s ease, opacity 0.5s ease; /* Removed transform transition */
+    will-change: opacity;
 }
 
 .gallery img:hover {
-    transform: scale(1.2) translateZ(70px); /* Removed rotateX and rotateY */
+    transform: none; /* Remove transform effect */
     box-shadow: 0 15px 30px rgba(255, 255, 255, 0.6);
     z-index: 10;
     animation: none; /* Disable swing animation */
 }
 
 .gallery img:not(:hover) {
-    transform: scale(0.8) translateZ(0);
+    transform: none; /* Remove transform effect */
     opacity: 0.5;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: opacity 0.3s ease; /* Removed transform transition */
+}
+
+/* Responsive layout */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+
+.column {
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+}
+
+.column img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+    .column {
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        flex: 100%;
+        max-width: 100%;
+    }
 }
