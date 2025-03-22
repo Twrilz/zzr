@@ -3,10 +3,11 @@ document.addEventListener("contextmenu", function (event) {
     event.preventDefault(); // Prevents the default right-click menu
 });
 
-// Alternatively, disable right-click only on images
+// Disable right-click on images and Disable dragging images
 const images = document.querySelectorAll(".gallery img");
 images.forEach((image) => {
     image.addEventListener("contextmenu", function (event) {
-        event.preventDefault(); // Protects image-specific content
+        event.preventDefault(); // Prevents the default right-click menu
     });
+    image.setAttribute("draggable", false); // Disable dragging
 });
