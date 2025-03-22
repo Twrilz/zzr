@@ -5,14 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Gallery</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/lightbox.css">
+   
 </head>
 <body>
-    <h1>My Photo Gallery</h1>
-    <section class="gallery">
-        <img src="images/image1.JPG" alt="photo 1">
-        <img src="images/image2.JPG" alt="photo 2">
-        <img src="images/image3.JPG" alt="photo 3">
-    </section>
-    <script src="js/script.js"></script>
+<div class="container">
+    <div class="gallery">
+        <a href="images/image1.JPG"data-lightbox="models" data-title="Caption1">
+            <img src="images/image1.JPG" alt="Image 1">
+        </a>
+        <a href="images/image2.JPG"data-lightbox="models" data-title="Caption2">
+            <img src="images/image2.JPG" alt="Image 2">
+        </a>
+        <a href="images/image3.JPG"data-lightbox="models" data-title="Caption3">
+            <img src="images/image3.JPG" alt="Image 3">
+        </a>
+        <a href="images/image4.JPG"data-lightbox="models" data-title="Caption4">
+            <img src="images/image4.JPG" alt="Image 4">
+    </div>
+</div>
+<script src="js/lightbox-plus-jquery.js"></script>
 </body>
 </html>
