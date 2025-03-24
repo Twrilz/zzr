@@ -11,3 +11,9 @@ images.forEach((image) => {
     });
     image.setAttribute("draggable", false); // Disable dragging
 });
+
+// Function to toggle the mobile menu
+function toggleMenu() {
+    const menu = document.querySelector('.navbar-menu');
+    menu.classList.toggle('active');
+}
