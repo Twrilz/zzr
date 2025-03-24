@@ -142,29 +142,3 @@ ul {
     transition: width 0.5s ease;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    main {
-        margin: 10px;
-        padding: 10px;
-    }
-
-    .navbar-menu {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .navbar-menu.active {
-        display: flex;
-    }
-
-    .navbar-menu li {
-        margin: 10px 0;
-    }
-
-    .hamburger {
-        display: block;
-    }
-}
-

@@ -59,13 +59,6 @@ h1 {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
-/* Responsive Navbar Menu */
-.navbar-menu.active {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 /* Video Gallery */
 .video-gallery {
     margin: 20px auto;
@@ -145,24 +138,6 @@ h1 {
     .video-panel video {
         width: 80%;
         height: auto;
-    }
-
-    .navbar-menu {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .navbar-menu.active {
-        display: flex;
-    }
-
-    .navbar-menu li {
-        margin: 10px 0;
-    }
-
-    .hamburger {
-        display: block;
     }
 }
 
