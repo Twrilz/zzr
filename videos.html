@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videos</title>
+    <link rel="stylesheet" href="css/videos.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/Icon.png">
+</head>
+<body>
+
+<h1>Videos</h1>
+
+<nav class="navbar">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="videos.html" class="active">Videos</a></li>
+        <li><a href="about.html">About</a></li>
+    </ul>
+</nav>
+
+<!-- Video Gallery Section -->
+<div class="video-gallery">
+    <h2>Videos</h2>
+    <div class="video-panel">
+        <a href="javascript:void(0);" onclick="openModal('images/Videos/sunset.mp4', 'Sunset Video')" data-caption="Sunset Video">
+            <video src="images/Videos/sunset.mp4" alt="Sunset"></video>
+        </a>
+        <!-- Add more videos here -->
+    </div>
+</div>
+
+<!-- Modal -->
+
+<div id="lightbox-modal" class="modal">
+    <div id="modal-caption" class="modal-caption"></div> <!-- Caption goes here -->
+    <img id="modal-image" class="modal-content" alt="Modal Image">
+    <video id="modal-video" class="modal-content" controls></video>
+</div>
+
+<footer class="footer">
+    <p>&copy; 2025 Zachary | All rights reserved.</p>
+    <p>Follow me on <a href="https://www.instagram.com/_twrilz/">Instagram</a> | <a href="https://github.com/Twrilz">GitHub</a></p>
+</footer>
+
+<script src="js/lightbox.js"></script>
+</body>
+</html>

@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/gallery.css">
     <link rel="icon" type="image/png" sizes="32x32" href="images/Icon.png">
-
-   
 </head>
 <body>
 
@@ -17,14 +15,41 @@
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="videos.html">Videos</a></li>
         <li><a href="about.html">About</a></li>
     </ul>
 </nav>
+
+<div class="gallery">
+    <div class="image-panel">
+        <a href="javascript:void(0);" onclick="openModal('images/image1.JPG', 'Beautiful Sunset')" data-caption="Beautiful Sunset">
+            <img src="images/image1.JPG" alt="Image 1">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/image2.JPG', 'Mountain View')" data-caption="Mountain View">
+            <img src="images/image2.JPG" alt="Image 2">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/image3.JPG', 'City Lights')" data-caption="City Lights">
+            <img src="images/image3.JPG" alt="Image 3">
+        </a>
+        <a href="javascript:void(0);" onclick="openModal('images/image4.JPG', 'Forest Path')" data-caption="Forest Path">
+            <img src="images/image4.JPG" alt="Image 4">
+        </a>
+    </div>
+</div>
+
+<!-- Modal -->
+
+<div id="lightbox-modal" class="modal">
+    <div id="modal-caption" class="modal-caption"></div> <!-- Caption goes here -->
+    <img id="modal-image" class="modal-content" alt="Modal Image">
+    <video id="modal-video" class="modal-content" controls></video>
+</div>
 
 <footer class="footer">
     <p>&copy; 2025 Zachary | All rights reserved.</p>
     <p>Follow me on <a href="https://www.instagram.com/_twrilz/">Instagram</a> | <a href="https://github.com/Twrilz">GitHub</a></p>
 </footer>
 
+<script src="js/lightbox.js"></script>
 </body>
 </html>
