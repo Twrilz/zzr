@@ -178,24 +178,6 @@ h1 {
         width: 80%;
         height: auto;
     }
-
-    .navbar-menu {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .navbar-menu.active {
-        display: flex;
-    }
-
-    .navbar-menu li {
-        margin: 10px 0;
-    }
-
-    .hamburger {
-        display: block;
-    }
 }
 
 /* Modal styling */
