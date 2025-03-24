@@ -1,47 +1,51 @@
 /* General styles */
 body {
-    margin: 0px;
+    margin: 0;
     font-family: Arial, sans-serif;
     background-color: #121212;
+    color: #ffffff;
 }
+
 main {
     margin: 20px;
     padding: 20px;
     border-radius: 10px;
     background-color: #1a1a1a;
 }
+
 h1 {
     text-align: center;
 }
 
 /* Navigation Bar */
 .navbar {
-background-color: #121212;
-padding: 10px 0;
-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    background-color: #121212;
+    padding: 10px 0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
 }
 
 .navbar ul {
-list-style: none;
-padding: 0;
-margin: 0;
-display: flex;
-justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .navbar li {
-margin: 0 10px;
+    margin: 0 10px;
 }
 
 .navbar a {
-color: white;
-text-decoration: none;
-padding: 12px 20px;
-display: inline-block;
-font-size: 1.1rem;
-border-radius: 5px;
-transition: all 0.3s ease;
-background-color: #1a1a1a;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    display: inline-block;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background-color: #1a1a1a;
 }
 
 .navbar a:hover {
@@ -52,18 +56,59 @@ background-color: #1a1a1a;
 
 /* Active Page Highlight */
 .navbar a.active {
-border: 2px solid white;
-padding: 10px 18px; /* Adjust padding to compensate for border */
-box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    border: 2px solid white;
+    padding: 10px 18px; /* Adjust padding to compensate for border */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Hamburger Icon (for small screens) */
+.hamburger {
+    display: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+/* Responsive Navbar Menu */
+.navbar-menu.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #121212;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar-menu li {
+        margin: 10px 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
 }
 
 /* General Section Styles */
 header {
     background-color: #000000;
     color: #ffffff;
-    padding: 1px;
+    padding: 20px;
     text-align: center;
 }
+
 section {
     margin: 20px;
     padding: 20px;
@@ -75,25 +120,33 @@ section {
 h2 {
     color: #ffffff;
 }
+
 ul {
     list-style-type: none;
     padding: 0;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
 .profile-info {
     display: flex;
     flex-wrap: wrap;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
 .profile-info div {
     width: 48%;
     margin: 10px;
 }
+
 .bio {
     color: #000000;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+/* Roblox ID Link */
+.profile-info a {
+    text-decoration: none;
+}
 
 /* Footer */
 .footer {
@@ -106,13 +159,15 @@ ul {
 }
 
 /* Footer Links */
-.footer a {
+.footer a,
+.profile-info a {
     color: white;
     text-decoration: none;
     position: relative;
 }
 
-.footer a::after {
+.footer a::after,
+.profile-info a::after {
     content: '';
     position: absolute;
     left: 0;
@@ -123,7 +178,44 @@ ul {
     transition: width 0.3s ease;
 }
 
-.footer a:hover::after {
+.footer a:hover::after,
+.profile-info a:hover::after {
     width: 100%;  /* Full width on hover */
     transition: width 0.5s ease;
+}
+
+/* Add responsiveness for smaller screens */
+@media (max-width: 600px) {
+    .profile-info div {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .bio {
+        font-size: 1rem;
+    }
+
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #121212;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar-menu.active {
+        display: flex;
+    }
+
+    .navbar-menu li {
+        margin: 10px 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
 }

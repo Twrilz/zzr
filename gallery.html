@@ -12,7 +12,10 @@
 <h1>Gallery</h1>
 
 <nav class="navbar">
-    <ul>
+    <div class="hamburger" onclick="toggleMenu()">
+        &#9776; <!-- Hamburger icon -->
+    </div>
+    <ul class="navbar-menu">
         <li><a href="index.html">Home</a></li>
         <li><a href="gallery.html" class="active">Gallery</a></li>
         <li><a href="videos.html">Videos</a></li>
@@ -22,18 +25,19 @@
 
 <div class="gallery">
     <div class="image-panel">
-        <a href="javascript:void(0);" onclick="openModal('images/image1.JPG', 'Beautiful Sunset')" data-caption="Beautiful Sunset">
-            <img src="images/image1.JPG" alt="Image 1">
+        <a href="javascript:void(0);" onclick="openModal('images/image1.JPG', '36.06561261248697, -90.5450821655956')" data-caption="36.06561261248697, -90.5450821655956">
+            <img src="images/image1.JPG" alt="Just for Fun">
         </a>
-        <a href="javascript:void(0);" onclick="openModal('images/DJI_0598', 'Road to Walnut Ridge, AR')" data-caption=" Road to Ridge, AR">
-            <img src="images/DJI_0598.JPG" alt="Image 2">
+        <a href="javascript:void(0);" onclick="openModal('images/image2.jpg', 'Goes BOOM')" data-caption=" Goes BOOM">
+            <img src="images/image2.jpg" alt="Firework">
         </a>
-        <a href="javascript:void(0);" onclick="openModal('images/image3.JPG', 'City Lights')" data-caption="City Lights">
-            <img src="images/image3.JPG" alt="Image 3">
+        <a href="javascript:void(0);" onclick="openModal('images/image3.JPG', 'Hydrangeas')" data-caption="Hydrangeas">
+            <img src="images/image3.JPG" alt="Hydrangeas">
         </a>
-        <a href="javascript:void(0);" onclick="openModal('images/image4.JPG', 'Forest Path')" data-caption="Forest Path">
-            <img src="images/image4.JPG" alt="Image 4">
+        <a href="javascript:void(0);" onclick="openModal('images/image4.JPG', 'Road to Walnut Ridge, AR')" data-caption="Road to Walnut Ridge, AR">
+            <img src="images/image4.JPG" alt="Road to Walnut Ridge, AR">
         </a>
+        
     </div>
 </div>
 
@@ -51,5 +55,6 @@
 </footer>
 
 <script src="js/lightbox.js"></script>
+<script src="js/script.js"></script> <!-- Add your JS script file -->
 </body>
 </html>
