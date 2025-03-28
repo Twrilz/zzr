@@ -13,7 +13,8 @@ main {
     margin: 20px;
     padding: 20px;
     border-radius: 10px;
-    background: linear-gradient(90deg, #ffff00, #ff6600);
+    background-color: #1a1a1a;
+    color: #ffffff;
     flex-grow: 1;
 }
 
