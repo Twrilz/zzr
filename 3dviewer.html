@@ -12,13 +12,24 @@
     .navbar { background: #222; color: #fff; padding: 8px 12px; }
     .navbar ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 12px; }
     .navbar a { color: #fff; text-decoration: none; }
+    .navbar a.active { text-decoration: underline; }
     #viewerWrap { position: relative; width: 100%; height: calc(100vh - 48px); background: #111; }
     #modelViewer { width: 100%; height: 100%; display: block; }
     .ui-overlay { position: absolute; top: 12px; right: 12px; display: flex; flex-direction: column; gap: 8px; z-index: 10; }
-    .ui-overlay button { background: rgba(255,255,255,0.9); border: none; padding: 8px 10px; border-radius: 6px; cursor: pointer; }
+    .ui-overlay button { background: rgba(255,255,255,0.95); border: none; padding: 8px 10px; border-radius: 6px; cursor: pointer; }
     .ui-overlay input[type=file] { display: none; }
-    .drop-hint { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: #ddd; background: rgba(0,0,0,0.35); padding: 8px 12px; border-radius: 6px; pointer-events: none; z-index: 5; }
+    .drop-hint { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: #ddd; background: rgba(0,0,0,0.35); padding: 8px 12px; border-radius: 6px; pointer-events: none; z-index: 5; display: none; }
   </style>
+
+  <!-- Import map resolves the bare specifier "three" for examples modules that import from 'three' -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js",
+      "three/": "https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -47,10 +58,11 @@
   <div class="drop-hint" id="dropHint">Drop .glb/.gltf file here to load</div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
-<script src="Twrilz/zzr/js/OrbitControls.js"></script> <!-- non-module example -->
 <script type="module">
-  import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/loaders/GLTFLoader.js';
+  // Using the import map above makes the bare specifier 'three' resolvable in the browser.
+  import * as THREE from 'three';
+  import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+  import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
   // Renderer, scene, camera
   const container = document.getElementById('modelViewer');
@@ -58,8 +70,9 @@
   scene.background = new THREE.Color(0x111111);
 
   const renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.outputEncoding = THREE.sRGBEncoding;
   container.appendChild(renderer.domElement);
 
   const camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.01, 1000);
@@ -89,24 +102,25 @@
   let currentModel = null;
   const loader = new GLTFLoader();
 
-  // Fit camera to object
+  // Fit camera to object (correct math using tan)
   function frameArea(sizeToFitOnScreen, box, camera) {
     const center = box.getCenter(new THREE.Vector3());
     const size = box.getSize(new THREE.Vector3());
     const maxSize = Math.max(size.x, size.y, size.z);
-    const fitHeightDistance = maxSize / (2 * Math.atan(Math.PI * camera.fov / 360));
-    const fitWidthDistance = fitHeightDistance / camera.aspect;
-    const distance = sizeToFitOnScreen * Math.max(fitHeightDistance, fitWidthDistance);
 
-    camera.position.copy(center);
-    camera.position.x += distance;
-    camera.position.y += distance * 0.2;
-    camera.position.z += distance;
+    const fov = THREE.Math.degToRad(camera.fov);
+    const distance = maxSize * sizeToFitOnScreen / (2 * Math.tan(fov / 2));
+
+    // place camera to the corner so object fits
+    const direction = new THREE.Vector3(1, 0.6, 1).normalize();
+    camera.position.copy(center).addScaledVector(direction, distance);
+
     camera.near = Math.max(0.01, distance / 100);
     camera.far = distance * 100;
     camera.updateProjectionMatrix();
     camera.lookAt(center);
     controls.target.copy(center);
+    controls.update();
   }
 
   function fitModelToView(object) {
@@ -116,19 +130,27 @@
 
   // Load default model from repo if available
   function loadDefaultModel() {
-    loader.load('models/shvan_92.glb', gltf => {
-      setModel(gltf.scene);
-    }, undefined, err => console.error(err));
+    try {
+      loader.load('models/shvan_92.glb', gltf => {
+        setModel(gltf.scene);
+      }, undefined, err => console.warn('Default model not found or failed to load:', err));
+    } catch (e) {
+      console.warn('Default model loader failed:', e);
+    }
   }
 
   function setModel(model) {
-    if (currentModel) scene.remove(currentModel);
+    if (currentModel) {
+      scene.remove(currentModel);
+      // dispose geometry/material if you want to free memory (optional)
+    }
     currentModel = model;
     // Ensure model cast/receive lights
     model.traverse(node => {
       if (node.isMesh) {
         node.castShadow = true;
         node.receiveShadow = true;
+        if (node.material) node.material.needsUpdate = true;
       }
     });
     scene.add(model);
@@ -150,7 +172,7 @@
       setModel(gltf.scene);
       URL.revokeObjectURL(url);
     }, undefined, err => {
-      console.error(err);
+      console.error('Failed to load file:', err);
       URL.revokeObjectURL(url);
     });
   }
@@ -163,14 +185,20 @@
     window.addEventListener(evt, ev => { ev.preventDefault(); dropHint.style.display = 'none'; });
   });
   window.addEventListener('drop', ev => {
-    const f = ev.dataTransfer.files && ev.dataTransfer.files[0];
+    const f = ev.dataTransfer && ev.dataTransfer.files && ev.dataTransfer.files[0];
     if (f) loadFile(f);
   });
 
-  // Buttons
+  // Zoom helpers (robust and not dependent on OrbitControls internals)
+  function zoomBy(factor) {
+    const dir = camera.position.clone().sub(controls.target).multiplyScalar(1 / factor);
+    camera.position.copy(controls.target).add(dir);
+    controls.update();
+  }
+
   document.getElementById('btnFit').addEventListener('click', () => { if (currentModel) fitModelToView(currentModel); });
-  document.getElementById('btnZoomIn').addEventListener('click', () => { controls.dollyIn(1.2); controls.update(); });
-  document.getElementById('btnZoomOut').addEventListener('click', () => { controls.dollyOut(1.2); controls.update(); });
+  document.getElementById('btnZoomIn').addEventListener('click', () => { zoomBy(1.25); });
+  document.getElementById('btnZoomOut').addEventListener('click', () => { zoomBy(0.8); });
 
   // Resize handling
   function onWindowResize() {
@@ -180,6 +208,9 @@
     renderer.setSize(w, h);
   }
   window.addEventListener('resize', onWindowResize);
+
+  // ensure initial size is correct
+  onWindowResize();
 
   // Animation loop
   function animate() {
@@ -191,6 +222,7 @@
 
   // Init
   loadDefaultModel();
+
 </script>
 
 </body>
