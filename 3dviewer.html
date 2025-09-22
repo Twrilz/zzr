@@ -19,14 +19,6 @@
     .ui-overlay input[type=file] { display: none; }
     .drop-hint { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: #ddd; background: rgba(0,0,0,0.35); padding: 8px 12px; border-radius: 6px; pointer-events: none; z-index: 5; }
   </style>
-  <!-- Import map to resolve bare 'three' specifier used internally by jsm example modules -->
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js"
-    }
-  }
-  </script>
 </head>
 <body>
 
@@ -55,10 +47,10 @@
   <div class="drop-hint" id="dropHint">Drop .glb/.gltf file here to load</div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+<script src="path/to/controls/OrbitControls.js"></script> <!-- non-module example -->
 <script type="module">
-  import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js';
-  import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/loaders/GLTFLoader.js';
-  import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/controls/OrbitControls.js';
+  import { GLTFLoader } from './js/three/examples/jsm/loaders/GLTFLoader.js';
 
   // Renderer, scene, camera
   const container = document.getElementById('modelViewer');
