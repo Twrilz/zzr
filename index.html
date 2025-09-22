@@ -1,99 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/Icon.png">
-    <style>
-        /* 3D viewer container */
-        #modelViewer {
-            width: 100%;
-            height: 500px; /* Adjust height as needed */
-            display: block;
-            margin: 20px 0;
-        }
-        @media (max-width: 768px) {
-            #modelViewer { height: 300px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/Icon.png">
+  <style>
+    /* 3D viewer container */
+    #modelViewer {
+      width: 100%;
+      height: 500px;
+      display: block;
+      margin: 20px 0;
+    }
+    @media (max-width: 768px) {
+      #modelViewer { height: 300px; }
+    }
+  </style>
 </head>
 <body>
 
 <h1>Home</h1>
 
 <nav class="navbar">
-    <ul>
-        <li><a href="https://twrilz.github.io/zzr/index.html" class="active">Home</a></li>
-        <li><a href="https://twrilz.github.io/zzr/gallery.html">Gallery</a></li>
-        <li><a href="https://twrilz.github.io/zzr/videos.html">Videos</a></li>
-        <li><a href="https://twrilz.github.io/zzr/about.html">About</a></li>
-        <li><a href="https://twrilz.github.io/zzr/contact.html">Contact</a></li>
-    </ul>
+  <ul>
+    <li><a href="https://twrilz.github.io/zzr/index.html" class="active">Home</a></li>
+    <li><a href="https://twrilz.github.io/zzr/gallery.html">Gallery</a></li>
+    <li><a href="https://twrilz.github.io/zzr/videos.html">Videos</a></li>
+    <li><a href="https://twrilz.github.io/zzr/about.html">About</a></li>
+    <li><a href="https://twrilz.github.io/zzr/contact.html">Contact</a></li>
+  </ul>
 </nav>
 
 <section>
-    <h2>Welcome to My Website!</h2>
-    <p>This is a brief introduction to my personal website. Here, you can find my latest projects, gallery, and videos. Feel free to explore!</p>
+  <h2>Welcome to My Website!</h2>
+  <p>This is a brief introduction to my personal website. Here, you can find my latest projects, gallery, and videos. Feel free to explore!</p>
 
-    <!-- 3D Model Viewer -->
-    <div id="modelViewer"></div>
+  <!-- 3D Model Viewer -->
+  <div id="modelViewer"></div>
 </section>
 
 <footer class="footer">
-    <p>&copy; 2025 Zachary | All rights reserved.</p>
-    <p>Follow me on <a href="https://www.instagram.com/_twrilz/">Instagram</a> | <a href="https://github.com/Twrilz">GitHub</a></p>
+  <p>&copy; 2025 Zachary | All rights reserved.</p>
+  <p>Follow me on <a href="https://www.instagram.com/_twrilz/">Instagram</a> | <a href="https://github.com/Twrilz">GitHub</a></p>
 </footer>
 
-<!-- Three.js Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/loaders/GLTFLoader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/controls/OrbitControls.js"></script>
+<!-- Three.js Module Scripts -->
+<script type="module">
+  import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js';
+  import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/loaders/GLTFLoader.js';
+  import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/controls/OrbitControls.js';
 
-<script>
-    // Scene setup
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 500, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(window.innerWidth, 500);
-    document.getElementById('modelViewer').appendChild(renderer.domElement);
+  // Scene setup
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 500, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setSize(window.innerWidth, 500);
+  document.getElementById('modelViewer').appendChild(renderer.domElement);
 
-    // Lighting
-    const light = new THREE.DirectionalLight(0xffffff, 1);
-    light.position.set(5, 10, 7.5);
-    scene.add(light);
+  // Lighting
+  const light = new THREE.DirectionalLight(0xffffff, 1);
+  light.position.set(5, 10, 7.5);
+  scene.add(light);
 
-    // Controls
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
+  // Controls
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.05;
 
-    // Load 3D model
-    const loader = new THREE.GLTFLoader();
-    loader.load('models/shvan_92.glb', function(gltf) {
-        scene.add(gltf.scene);
-        gltf.scene.position.set(0, 0, 0);
-    }, undefined, function(error) {
-        console.error('Error loading model:', error);
-    });
+  // Load 3D model
+  const loader = new GLTFLoader();
+  loader.load('models/shvan_92.glb', function(gltf) {
+      scene.add(gltf.scene);
+      gltf.scene.position.set(0, 0, 0);
+  }, undefined, function(error) {
+      console.error('Error loading model:', error);
+  });
 
-    camera.position.z = 5;
+  camera.position.z = 5;
 
-    // Animation loop
-    function animate() {
-        requestAnimationFrame(animate);
-        controls.update();
-        renderer.render(scene, camera);
-    }
-    animate();
+  // Animation loop
+  function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+  }
+  animate();
 
-    // Handle window resize
-    window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / 500;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, 500);
-    });
+  // Handle window resize
+  window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / 500;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, 500);
+  });
 </script>
 
 </body>
