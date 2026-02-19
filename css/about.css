@@ -1,103 +1,125 @@
 /* General styles */
 body {
     margin: 0px;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif; /* Slightly cleaner than default Arial */
     background-color: #121212;
+    color: #ffffff; /* Sets default text to white so you can see it */
     overflow-x: hidden;
     overflow-y: auto;
 }
+
 main {
-    margin: 20px;
+    max-width: 800px; /* Prevents the page from being too wide */
+    margin: 40px auto; /* Centers the whole page */
     padding: 20px;
     border-radius: 10px;
     background-color: #1a1a1a;
 }
+
 h1 {
     text-align: center;
+    color: #ff6600; /* Uses your orange */
 }
 
 /* Navigation Bar */
 .navbar {
-background-color: #121212;
-padding: 10px 0;
-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    background-color: #121212;
+    padding: 10px 0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .navbar ul {
-list-style: none;
-padding: 0;
-margin: 0;
-display: flex;
-justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .navbar li {
-margin: 0 10px;
+    margin: 0 10px;
 }
 
 .navbar a {
-color: white;
-text-decoration: none;
-padding: 12px 20px;
-display: inline-block;
-font-size: 1.1rem;
-border-radius: 5px;
-transition: all 0.3s ease;
-background-color: #1a1a1a;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    display: inline-block;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background-color: #1a1a1a;
 }
 
 .navbar a:hover {
     background: linear-gradient(90deg, #ffff00, #ff6600);
-    color: white;
+    color: #000; /* Black text on hover looks better with the yellow/orange */
     transform: scale(1.1);
 }
 
 /* Active Page Highlight */
 .navbar a.active {
-border: 2px solid white;
-padding: 10px 18px; /* Adjust padding to compensate for border */
-box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    border: 2px solid #ff6600; /* Match your theme better than white */
+    box-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
 }
 
 /* General Section Styles */
-header {
-    background-color: #000000;
-    color: #ffffff;
-    padding: 1px;
-    text-align: center;
-}
 section {
-    margin: 20px;
-    padding: 20px;
-    background-color: #707070;
+    margin-bottom: 30px;
+    padding: 25px;
+    background-color: #1e1e1e; /* Darker grey than before for better contrast */
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #ff6600; /* Adds that nice orange pop */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 h2 {
-    color: #ffffff;
+    color: #ffff00; /* Neon yellow for the section titles */
+    margin-top: 0;
 }
-ul {
-    list-style-type: none;
-    padding: 0;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+/* FIX: Bio Visibility */
+.bio {
+    color: #ffffff; /* Changed from black (#000) to white (#fff) */
+    font-size: 1.15rem;
+    line-height: 1.6;
 }
+
+/* Profile Info Grid */
 .profile-info {
     display: flex;
     flex-wrap: wrap;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    gap: 10px;
 }
+
 .profile-info div {
-    width: 48%;
-    margin: 10px;
-}
-.bio {
-    color: #000000;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    flex: 1 1 45%; /* Makes it two columns but responsive */
+    background: #252525;
+    padding: 10px;
+    border-radius: 5px;
 }
 
+.profile-info h3 {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #ff6600;
+}
 
-/* Footer */
+.profile-info p {
+    margin: 5px 0 0 0;
+}
+
+/* List Styling */
+ul {
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
+    color: #e0e0e0;
+}
+
+/* --- FOOTER --- */
 .footer {
     background-color: #000000;
     color: #ffffff;
@@ -107,7 +129,6 @@ ul {
     margin-top: auto;
 }
 
-/* Footer Links */
 .footer a {
     color: white;
     text-decoration: none;
@@ -126,6 +147,6 @@ ul {
 }
 
 .footer a:hover::after {
-    width: 100%;  /* Full width on hover */
+    width: 100%;  
     transition: width 0.5s ease;
 }
