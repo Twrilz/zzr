@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery</title>
-    <link rel="stylesheet" href="css/about.css">
+    <title>Gallery & Videos</title>
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" type="image/png" sizes="32x32" href="images/Icon.png">
 </head>
 <body>
@@ -12,27 +13,55 @@
     <ul>
         <li><a href="https://twrilz.github.io/zzr/index.html">Home</a></li>
         <li><a href="https://twrilz.github.io/zzr/gallery.html" class="active">Gallery</a></li>
-        <li><a href="https://twrilz.github.io/zzr/videos.html">Videos</a></li>
+        <li><a href="#videos">Videos</a></li>
         <li><a href="https://twrilz.github.io/zzr/about.html">About</a></li>
         <li><a href="https://twrilz.github.io/zzr/contact.html">Contact</a></li>
     </ul>
 </nav>
 
 <div class="gallery">
-    <div class="image-panel">
-        <a href="javascript:void(0);" onclick="openModal('images/image1.JPG', 'Beautiful Sunset')" data-caption="Beautiful Sunset">
-            <img src="images/image1.JPG" alt="Image 1">
-        </a>
-        <a href="javascript:void(0);" onclick="openModal('images/image2.JPG', 'Sunset')" data-caption="Sunset">
-            <img src="images/image2.JPG" alt="Sunset">
-        </a>
-        <a href="javascript:void(0);" onclick="openModal('images/image3.JPG', 'Hydrangeas')" data-caption="Hydrangeas">
-            <img src="images/image3.JPG" alt="Hydrangeas">
-        </a>
-        <a href="javascript:void(0);" onclick="openModal('images/image4.JPG', 'Road to Walnut Ridge, AR')" data-caption="Road to Ridge, AR">
-            <img src="images/image4.JPG" alt="Road to Ridge, AR">
-        </a>
-    </div>
+    <section id="images">
+        <h2>Photos</h2>
+        <div class="media-grid">
+            <div class="media-card">
+                <a href="javascript:void(0);" onclick="openModal('images/image1.JPG', 'Beautiful Sunset')">
+                    <img src="images/image1.JPG" alt="Beautiful Sunset">
+                </a>
+                <div class="meta">Beautiful Sunset</div>
+            </div>
+            <div class="media-card">
+                <a href="javascript:void(0);" onclick="openModal('images/image2.JPG', 'Sunset')">
+                    <img src="images/image2.JPG" alt="Sunset">
+                </a>
+                <div class="meta">Sunset</div>
+            </div>
+            <div class="media-card">
+                <a href="javascript:void(0);" onclick="openModal('images/image3.JPG', 'Hydrangeas')">
+                    <img src="images/image3.JPG" alt="Hydrangeas">
+                </a>
+                <div class="meta">Hydrangeas</div>
+            </div>
+            <div class="media-card">
+                <a href="javascript:void(0);" onclick="openModal('images/image4.JPG', 'Road to Walnut Ridge, AR')">
+                    <img src="images/image4.JPG" alt="Road to Ridge, AR">
+                </a>
+                <div class="meta">Road to Ridge, AR</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="videos">
+        <h2>Videos</h2>
+        <div class="media-grid video-panel">
+            <div class="media-card">
+                <a href="javascript:void(0);" onclick="openModal('images/Videos/sunset.mp4', 'Sunset Video')">
+                    <video src="images/Videos/sunset.mp4" preload="metadata"></video>
+                </a>
+                <div class="meta">Sunset Video</div>
+            </div>
+            <!-- Add more video cards here -->
+        </div>
+    </section>
 </div>
 
 <!-- Modal -->
