@@ -31,11 +31,12 @@
         birthDate = new Date(birthdayEl.textContent.trim());
       }
 
-      if (!isNaN(birthDate)) {
+      // Ensure parsed value is a valid Date
+      if (birthDate instanceof Date && !isNaN(birthDate.getTime())) {
         ageEl.textContent = computeAgeFromDate(birthDate);
       } else {
-        ageEl.textContent = '';
-        console.warn('Could not parse birthday:', birthdayEl.textContent || birthAttr);
+        ageEl.textContent = 'N/A';
+        console.warn('Could not parse birthday:', birthdayEl.textContent || birthAttr, birthDate);
       }
     }
   } catch (e) {
