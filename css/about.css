@@ -150,3 +150,42 @@ ul li {
     width: 100%;  
     transition: width 0.5s ease;
 }
+
+/* Latest section cards */
+.latest-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.card {
+    flex: 1 1 45%;
+    background: #252525;
+    padding: 18px;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+    border-left: 4px solid #ff6600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card h3 { margin-top: 0; color: #ffffff; }
+.card p { color: #dcdcdc; margin: 8px 0 0 0; }
+
+.card .btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: #ff6600;
+    color: #000;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(255, 102, 0, 0.12); }
+
+@media (max-width: 768px) {
+    .latest-grid { flex-direction: column; }
+    .card { flex: 1 1 100%; }
+}
