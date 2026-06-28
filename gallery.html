@@ -3,94 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery</title>
     <title>Gallery & Videos</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/Icon.png">
+    <link rel="stylesheet" href="/zzr/css/styles.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/zzr/images/Icon.png">
 </head>
 <body>
+    <nav class="navbar">
         <ul>
-            <nav class="navbar">
-                <ul>
-                    <li><a href="/zzr/">Home</a></li>
-                    <li><a href="/zzr/gallery/" class="active">Gallery</a></li>
-                    <li><a href="/zzr/about/">About</a></li>
-                    <li><a href="/zzr/contact/">Contact</a></li>
-                </ul>
-            </nav>
+            <li><a href="/zzr/">Home</a></li>
+            <li><a href="/zzr/gallery/" class="active">Gallery</a></li>
+            <li><a href="/zzr/about/">About</a></li>
+            <li><a href="/zzr/contact/">Contact</a></li>
         </ul>
     </nav>
 
+    <div class="gallery">
+        <section id="images">
+            <h2>Photos</h2>
+            <div class="media-grid">
+                <div class="media-card">
+                    <a href="javascript:void(0);" onclick="openModal('/zzr/images/image1.JPG', 'Beautiful Sunset')">
+                        <img src="/zzr/images/image1.JPG" alt="Beautiful Sunset">
+                    </a>
+                    <div class="meta">Beautiful Sunset</div>
+                </div>
+                <div class="media-card">
+                    <a href="javascript:void(0);" onclick="openModal('/zzr/images/image2.JPG', 'Sunset')">
+                        <img src="/zzr/images/image2.JPG" alt="Sunset">
+                    </a>
+                    <div class="meta">Sunset</div>
+                </div>
+                </div>
+        </section>
 
-<div class="gallery">
-    <section id="images">
-        <h2>Photos</h2>
-        <div class="media-grid">
-            <div class="media-card">
-                <a href="javascript:void(0);" onclick="openModal('images/image1.JPG', 'Beautiful Sunset')">
-                    <img src="images/image1.JPG" alt="Beautiful Sunset">
-                </a>
-                <div class="meta">Beautiful Sunset</div>
-            </div>
-            <div class="media-card">
-                <a href="javascript:void(0);" onclick="openModal('images/image2.JPG', 'Sunset')">
-                    <img src="images/image2.JPG" alt="Sunset">
-                </a>
-                <div class="meta">Sunset</div>
-            </div>
-            <div class="media-card">
-                <a href="javascript:void(0);" onclick="openModal('images/image3.JPG', 'Hydrangeas')">
-                    <img src="images/image3.JPG" alt="Hydrangeas">
-                </a>
-                <div class="meta">Hydrangeas</div>
-            </div>
-            <div class="media-card">
-                <a href="javascript:void(0);" onclick="openModal('images/image4.JPG', 'Road to Walnut Ridge, AR')">
-                    <img src="images/image4.JPG" alt="Road to Ridge, AR">
-                </a>
-                <div class="meta">Road to Ridge, AR</div>
-            </div>
-            <div class="media-card">
-                <a href="javascript:void(0);" onclick="openModal('images/image5.JPG', 'Sunset 2/20/2026')">
-                    <img src="images/image5.JPG" alt="Sunset 2/20/2026">
-                </a>
-                <div class="meta">Sunset - 2/20/2026</div>
-            </div>
-        </div>
-    </section>
+        <section id="videos">
+            <h2>Videos</h2>
+            <div class="media-grid video-panel">
+                <div class="media-card">
+                    <a href="javascript:void(0);" onclick="openModal('/zzr/images/Videos/sunset.mp4', 'Sunset Video')">
+                        <video src="/zzr/images/Videos/sunset.mp4" preload="metadata"></video>
+                    </a>
+                    <div class="meta">Sunset Video</div>
+                </div>
+                </div>
+        </section>
+    </div>
 
-    <section id="videos">
-        <h2>Videos</h2>
-        <div class="media-grid video-panel">
-            <div class="media-card">
-                <a href="javascript:void(0);" onclick="openModal('images/Videos/sunset.mp4', 'Sunset Video')">
-                    <video src="images/Videos/sunset.mp4" preload="metadata"></video>
-                </a>
-                <div class="meta">Sunset Video</div>
-            </div>
-            <div class="media-card">
-                <a href="javascript:void(0);" onclick="openModal('images/Videos/465feet_sunset.mp4', '465 Feet Sunset Video')">
-                    <video src="images/Videos/465feet_sunset.mp4" preload="metadata"></video>
-                </a>
-                <div class="meta">465 Feet Sunset Video</div>
-        </div>
-    </section>
-</div>
+    <div id="lightbox-modal" class="modal">
+        <div id="modal-caption" class="modal-caption"></div>
+        <img id="modal-image" class="modal-content" alt="Modal Image">
+        <video id="modal-video" class="modal-content" controls></video>
+    </div>
 
-<!-- Modal -->
+    <footer class="footer">
+        <p>&copy; <span class="current-year"></span> Zachary | All rights reserved.</p>
+        <p>Follow me on <a href="https://www.instagram.com/_twrilz/">Instagram</a> | <a href="https://github.com/Twrilz">GitHub</a></p>
+    </footer>
 
-<div id="lightbox-modal" class="modal">
-    <div id="modal-caption" class="modal-caption"></div> <!-- Caption goes here -->
-    <img id="modal-image" class="modal-content" alt="Modal Image">
-    <video id="modal-video" class="modal-content" controls></video>
-</div>
-
-<footer class="footer">
-    <p>&copy; <span class="current-year"></span> Zachary | All rights reserved.</p>
-    <p>Follow me on <a href="https://www.instagram.com/_twrilz/">Instagram</a> | <a href="https://github.com/Twrilz">GitHub</a></p>
-</footer>
-
-<script src="js/year.js"></script>
-<script src="js/lightbox.js"></script>
+    <script src="/zzr/js/year.js"></script>
+    <script src="/zzr/js/lightbox.js"></script>
 </body>
 </html>
