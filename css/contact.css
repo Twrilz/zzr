@@ -1,53 +1,71 @@
 @import url('about.css');
 
-/* Contact-specific styles (keeps form layout and controls) */
+/* Main form container */
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    margin: 30px auto;
+    padding: 20px;
+    max-width: 600px;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     width: 100%;
-    max-width: 500px;
 }
 
 .form-group label {
-    font-size: 16px;
-    color: #ffffff;
-    margin-bottom: 5px;
+    display: block; /* Ensures label sits above the input */
+    font-size: 15px;
+    font-weight: 600;
+    color: #e0e0e0;
+    margin-bottom: 8px;
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     font-size: 16px;
-    border-radius: 5px;
-    border: none;
-    margin-top: 5px;
-    background-color: #121212;
-    color: white;
+    border-radius: 8px;
+    border: 2px solid #333; /* Adds structure */
+    background-color: #1a1a1a;
+    color: #ffffff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box; /* Prevents padding from breaking width */
+}
+
+/* Visual feedback for the user */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ff6600;
+    box-shadow: 0 0 8px rgba(255, 102, 0, 0.3);
 }
 
 .form-group textarea {
-    height: 150px;
-    resize: none;
+    height: 180px;
+    resize: vertical; /* Allows user to resize if needed */
 }
 
 .form-group button {
-    padding: 12px 20px;
-    font-size: 16px;
-    color: white;
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
     background-color: #ff6600;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .form-group button:hover {
     background-color: #e65a00;
+}
+
+.form-group button:active {
+    transform: scale(0.98); /* Adds a "click" effect */
 }
