@@ -27,7 +27,6 @@
         // Expect ISO format YYYY-MM-DD
         birthDate = new Date(birthAttr + 'T00:00:00');
       } else {
-        // Fallback: try parsing text content like "November 28, 2005"
         birthDate = new Date(birthdayEl.textContent.trim());
       }
 
