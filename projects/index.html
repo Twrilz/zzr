@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="/zzr/css/about.css">
+    <link rel="stylesheet" href="/zzr/css/logic-preview.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/zzr/images/Icon.png">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/zzr/">Home</a></li>
+            <li><a href="/zzr/gallery/">Gallery</a></li>
+            <li><a href="/zzr/about/">About</a></li>
+            <li><a href="/zzr/projects/" class="active">Projects</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Zachary's Projects</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Welcome</h2>
+            <p>Explore my projects, below.</p>
+        </section>
+
+        <section class="latest">
+            <h2>Latest</h2>
+            <div class="latest-grid">
+                <article class="card">
+                    <div class="preview">
+                    <div class="bar"><b>Logic Sandbox</b><span>Half Adder</span></div>
+                    <div class="board">
+                    <svg viewBox="0 0 340 172" role="group" aria-label="Half adder demo: two switches feed an XOR gate and an AND gate">
+                        <defs>
+                            <linearGradient id="nodeGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0" stop-color="#f7f7f6"/><stop offset="1" stop-color="#e6e6e3"/>
+                            </linearGradient>
+                            <radialGradient id="ledOn" cx="0.35" cy="0.3" r="0.8">
+                                <stop offset="0" stop-color="#fffbe9"/><stop offset="0.45" stop-color="#e8c86a"/><stop offset="1" stop-color="#b8983e"/>
+                            </radialGradient>
+                        </defs>
+                        <!-- wires -->
+                        <path id="wA1" class="wire" d="M84 72 H108 V44 H140"/>
+                        <path id="wA2" class="wire" d="M108 72 V120 H140"/>
+                        <path id="wB1" class="wire" d="M84 132 H124 V68 H140"/>
+                        <path id="wB2" class="wire" d="M124 132 V144 H140"/>
+                        <path id="wS" class="wire" d="M212 56 H262"/>
+                        <path id="wC" class="wire" d="M212 132 H262"/>
+                        <!-- switches -->
+                        <g id="swA" class="sw" role="switch" aria-checked="false" aria-label="Input A" tabindex="0">
+                            <rect class="node" x="8" y="40" width="76" height="48" rx="8"/>
+                            <text class="head" x="46" y="56">SWITCH A</text>
+                            <rect class="tog" x="27" y="63" width="38" height="20" rx="10"/>
+                            <circle class="knob" cx="37" cy="73" r="7"/>
+                        </g>
+                        <g id="swB" class="sw" role="switch" aria-checked="false" aria-label="Input B" tabindex="0">
+                            <rect class="node" x="8" y="100" width="76" height="48" rx="8"/>
+                            <text class="head" x="46" y="116">SWITCH B</text>
+                            <rect class="tog" x="27" y="123" width="38" height="20" rx="10"/>
+                            <circle class="knob" cx="37" cy="133" r="7"/>
+                        </g>
+                        <!-- gates -->
+                        <rect class="node" x="140" y="28" width="72" height="56" rx="8"/>
+                        <text class="head" x="176" y="52">XOR</text>
+                        <rect class="node" x="140" y="104" width="72" height="56" rx="8"/>
+                        <text class="head" x="176" y="128">AND</text>
+                        <!-- lamps -->
+                        <rect class="node" x="262" y="30" width="72" height="52" rx="8"/>
+                        <text class="head" x="298" y="46">SUM</text>
+                        <circle id="ledS" class="led" cx="298" cy="64" r="10"/>
+                        <rect class="node" x="262" y="106" width="72" height="52" rx="8"/>
+                        <text class="head" x="298" y="122">CARRY</text>
+                        <circle id="ledC" class="led" cx="298" cy="140" r="10"/>
+                        <!-- pins -->
+                        <circle id="pA" class="pin" cx="84" cy="72" r="5.5"/>
+                        <circle id="pB" class="pin" cx="84" cy="132" r="5.5"/>
+                        <circle id="pX1" class="pin" cx="140" cy="44" r="5.5"/>
+                        <circle id="pX2" class="pin" cx="140" cy="68" r="5.5"/>
+                        <circle id="pXo" class="pin" cx="212" cy="56" r="5.5"/>
+                        <circle id="pN1" class="pin" cx="140" cy="120" r="5.5"/>
+                        <circle id="pN2" class="pin" cx="140" cy="144" r="5.5"/>
+                        <circle id="pNo" class="pin" cx="212" cy="132" r="5.5"/>
+                        <circle id="pLS" class="pin" cx="262" cy="56" r="5.5"/>
+                        <circle id="pLC" class="pin" cx="262" cy="132" r="5.5"/>
+                    </svg>
+                    </div>
+                </div>
+                    <div>
+                        <h3>Logic Sandbox</h3>
+                        <p>Interactive logic gate simulation and circuit design tool.</p>
+                    </div>
+                    <a class="btn" href="https://twrilz.github.io/Logic-Sandbox/" target="_blank">View Project</a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; <span class="current-year"></span> Zachary | All rights reserved.</p>
+        <p>Follow me on <a href="https://www.instagram.com/_twrilz/">Instagram</a></p>
+    </footer>
+    <script src="js/year.js"></script>
+    <script src="js/leaves.js"></script>
+    <script src="js/snow.js"></script>
+    <script src="js/noselect.js"></script>
+    <script>
+    // Logic Sandbox half-adder preview
+    (function () {
+        var state = { a: 1, b: 0 };
+        var $ = function (id) { return document.getElementById(id); };
+        function hot(id, v) { $(id).classList.toggle('hot', !!v); }
+        function render() {
+            var a = state.a, b = state.b, sum = a ^ b, carry = a & b;
+            [['swA', a], ['swB', b]].forEach(function (x) {
+                $(x[0]).classList.toggle('on', !!x[1]);
+                $(x[0]).setAttribute('aria-checked', String(!!x[1]));
+            });
+            ['wA1', 'wA2', 'pA', 'pX1', 'pN1'].forEach(function (id) { hot(id, a); });
+            ['wB1', 'wB2', 'pB', 'pX2', 'pN2'].forEach(function (id) { hot(id, b); });
+            ['wS', 'pXo', 'pLS'].forEach(function (id) { hot(id, sum); });
+            ['wC', 'pNo', 'pLC'].forEach(function (id) { hot(id, carry); });
+            $('ledS').classList.toggle('on', !!sum);
+            $('ledC').classList.toggle('on', !!carry);
+        }
+        function bind(id, key) {
+            var el = $(id);
+            function toggle() { state[key] ^= 1; render(); }
+            el.addEventListener('click', toggle);
+            el.addEventListener('keydown', function (e) {
+                if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggle(); }
+            });
+        }
+        bind('swA', 'a');
+        bind('swB', 'b');
+        render();
+    })();
+    </script>
+</body>
+</html>

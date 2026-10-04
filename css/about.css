@@ -53,13 +53,13 @@ h1 {
 
 .navbar a:hover {
     background: linear-gradient(90deg, #ffff00, #ff6600);
-    color: #000; /* Black text on hover looks better with the yellow/orange */
+    color: #000;
     transform: scale(1.1);
 }
 
 /* Active Page Highlight */
 .navbar a.active {
-    border: 2px solid #ff6600; /* Match your theme better than white */
+    border: 2px solid #ff6600;
     box-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
 }
 
@@ -69,7 +69,6 @@ section {
     padding: 25px;
     background-color: #1e1e1e; /* Darker grey than before for better contrast */
     border-radius: 8px;
-    border-left: 4px solid #ff6600; /* Adds that nice orange pop */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
@@ -78,9 +77,9 @@ h2 {
     margin-top: 0;
 }
 
-/* FIX: Bio Visibility */
+
 .bio {
-    color: #ffffff; /* Changed from black (#000) to white (#fff) */
+    color: #ffffff;
     font-size: 1.15rem;
     line-height: 1.6;
 }
@@ -102,7 +101,6 @@ h2 {
 .profile-info h3 {
     margin: 0;
     font-size: 0.9rem;
-    color: #ff6600;
 }
 
 .profile-info p {
@@ -151,44 +149,65 @@ ul li {
     transition: width 0.5s ease;
 }
 
-/* Latest section cards */
-.latest-grid {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 15px;
-}
+/* Modern Card Redesign Styles */
+        .latest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
 
-.card {
-    flex: 1 1 45%;
-    background: #252525;
-    padding: 18px;
-    border-radius: 8px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
-    border-left: 4px solid #ff6600;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+        .card {
+            background: linear-gradient(135deg, rgba(30, 30, 35, 0.8), rgba(20, 20, 25, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-.card h3 { margin-top: 0; color: #ffffff; }
-.card p { color: #dcdcdc; margin: 8px 0 0 0; }
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(100, 150, 255, 0.1);
+        }
 
-.card .btn {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 10px 14px;
-    background: #ff6600;
-    color: #000;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-}
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
 
-.card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(255, 102, 0, 0.12); }
+        .card p {
+            color: #a0a0ab;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
 
-@media (max-width: 768px) {
-    .latest-grid { flex-direction: column; }
-    .card { flex: 1 1 100%; }
-}
+        .card .btn {
+            align-self: flex-start;
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .card .btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.02);
+        }
 
 /* Gallery & Video layout */
 .gallery {
@@ -238,6 +257,7 @@ ul li {
     padding: 40px 20px;
 }
 .modal-content { max-width: 100%; max-height: 80vh; margin: 0 auto; display: block; border-radius: 8px; }
+.modal video { display: none; } /* hidden until the lightbox opens a video */
 .modal-caption { text-align: center; color: #fff; margin-bottom: 12px; font-weight: 600; }
 .modal .close-btn {
     position: absolute;

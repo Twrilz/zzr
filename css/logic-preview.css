@@ -1,0 +1,73 @@
+/* ===== Logic Sandbox live preview */
+.preview {
+    --board:#545454; --panel:#ababab; --panel-edge:#30302e; --silk:#2f2f2d; --silk-dim:#5c5c59;
+    --muted:#2a2a29; --copper:#c9ac54; --copper-bright:#e8c86a; --signal:#f0cf5a;
+    --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto 1.25rem;
+    border: 1px solid var(--panel-edge);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--board);
+    min-width: 0;
+}
+.preview .bar {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 8px 12px;
+    background: linear-gradient(180deg, rgba(236,236,234,0.94), rgba(236,236,234,0.78));
+    border-bottom: 1px solid var(--panel-edge);
+    color: var(--silk);
+    font-family: var(--sans);
+    font-size: 12.5px;
+}
+.preview .bar b { font-weight: 600; letter-spacing: 0.2px; }
+.preview .bar span {
+    font-family: var(--mono); font-size: 11px;
+    background: rgba(201,172,84,0.3); border: 1px solid var(--copper); border-radius: 6px;
+    padding: 2px 8px;
+}
+.preview .board {
+    background-color: var(--board);
+    background-image: radial-gradient(rgba(255,255,255,0.14) 1px, transparent 1px);
+    background-size: 18px 18px;
+    padding: 6px 6px 2px;
+}
+.preview svg { display: block; width: 100%; height: auto; max-width: 100%; }
+.preview .wire { fill: none; stroke: #000; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.preview .wire.hot { stroke: var(--signal); filter: drop-shadow(0 0 5px rgba(240,207,90,1)); }
+.preview .node { fill: url(#nodeGrad); stroke: var(--panel-edge); stroke-width: 1; }
+.preview .head { font-family: var(--mono); font-size: 10.5px; font-weight: 600; fill: var(--silk); text-anchor: middle; letter-spacing: 0.4px; }
+.preview .sub { font-family: var(--mono); font-size: 9px; fill: var(--silk-dim); text-anchor: middle; }
+.preview .pin { fill: #cfcfcc; stroke: var(--muted); stroke-width: 2; }
+.preview .pin.hot { fill: var(--signal); stroke: var(--signal); filter: drop-shadow(0 0 4px rgba(240,207,90,0.9)); }
+.preview .sw { cursor: pointer; }
+.preview .sw:focus-visible .node { stroke: var(--copper-bright); stroke-width: 2; }
+.preview .sw:focus-visible { outline: none; }
+.preview .tog { fill: #cfcfcc; stroke: var(--panel-edge); stroke-width: 1; }
+.preview .sw.on .tog { stroke: var(--signal); }
+.preview .knob { fill: #f4f4f2; stroke: var(--panel-edge); stroke-width: 1; transition: transform .15s ease; }
+.preview .sw.on .knob { fill: var(--signal); stroke: var(--signal); transform: translateX(18px); filter: drop-shadow(0 0 4px rgba(240,207,90,0.7)); }
+.preview .led { fill: #d4d4d1; stroke: var(--panel-edge); stroke-width: 1.5; }
+.preview .led.on { fill: url(#ledOn); stroke: #b8983e; filter: drop-shadow(0 0 7px rgba(232,200,106,0.9)); }
+
+/* Small screens: same 600px breakpoint as about.css. The SVG shrinks with the card,
+   so bump the in-diagram labels back up and tighten the toolbar. */
+@media (max-width: 600px) {
+    .preview .bar { padding: 6px 10px; font-size: 12px; }
+    .preview .bar span { font-size: 10.5px; }
+    .preview .board { padding: 4px 4px 0; }
+    .preview .head { font-size: 13px; letter-spacing: 0.2px; }
+}
+
+@media (prefers-reduced-motion: reduce) { .preview .knob { transition: none; } }
+
+/* Remove the old orange left edge on the Latest section and its cards */
+
+.latest-grid .card {
+    flex: none;
+}
+.latest-grid .card {
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
